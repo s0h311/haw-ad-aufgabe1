@@ -3,6 +3,11 @@ package application;
 public class SimpleLinkedList<T> implements SimpleList<T> {
 
   private int elements;
+  private Node<T> head;
+
+  public SimpleLinkedList(){
+    head = new Node<T>();
+  }
 
   @Override
   public T extractNo(int requestedPosition) {
@@ -12,20 +17,43 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
   @Override
   public T getNo(int requestedPosition) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getNo'");
+    if(requestedPosition > elements){
+      throw new IllegalArgumentException();
+    }
+    Node<T> requestedNode = head;
+    for(int i = 0; i<=requestedPosition; i++){
+      requestedNode = requestedNode.next;
+    }
+    return requestedNode.data;
   }
 
   @Override
   public T setNo(int requestedPosition, T value) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setNo'");
+    if(requestedPosition > elements){
+      throw new IllegalArgumentException();
+    }
+    Node<T> newNode = new Node<T>(value);
+    Node<T> node = head;
+    Node<T> oldNode = head; 
+    for(int i=0; i<requestedPosition; i++){
+      node = node.next;
+      oldNode = node;
+      node.next = newNode;
+    }
+    return oldNode.data;
   }
 
   @Override
   public void putNo(int requestedPosition, T value) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'putNo'");
+    if(requestedPosition > elements){
+      throw new IllegalArgumentException();
+    }
+    Node<T> newNode = new Node<T>(value);
+    Node<T> node = head;
+    for(int i=0; i<requestedPosition; i++){
+      node = node.next;
+      node.next = newNode;
+    }
   }
 
   @Override
@@ -40,8 +68,19 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
   @Override
   public void clear() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    head = null;
   }
   
+  private class Node<T> {
+    Node<T> next;
+    T data;
+
+    Node(){
+
+    }
+    Node(T data){
+      this.data = data;
+    }
+    
+  }
 }

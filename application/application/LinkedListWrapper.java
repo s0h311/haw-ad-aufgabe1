@@ -1,6 +1,6 @@
 package application;
 
-public class LinkedListWrapper<T> implements SimpleList<T>{
+public class LinkedListWrapper<T> implements SimpleList<T> {
 
   @Override
   public T extractNo(int requestedPosition) {
@@ -43,5 +43,5 @@ public class LinkedListWrapper<T> implements SimpleList<T>{
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'clear'");
   }
-  
+
 }

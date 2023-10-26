@@ -5,7 +5,7 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
   private int elements;
   private Node<T> head;
 
-  public SimpleLinkedList(){
+  public SimpleLinkedList() {
     head = new Node<T>();
   }
 
@@ -17,11 +17,11 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
   @Override
   public T getNo(int requestedPosition) {
-    if(requestedPosition > elements){
+    if (requestedPosition > elements) {
       throw new IllegalArgumentException();
     }
     Node<T> requestedNode = head;
-    for(int i = 0; i<=requestedPosition; i++){
+    for (int i = 0; i <= requestedPosition; i++) {
       requestedNode = requestedNode.next;
     }
     return requestedNode.data;
@@ -29,13 +29,13 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
   @Override
   public T setNo(int requestedPosition, T value) {
-    if(requestedPosition > elements){
+    if (requestedPosition > elements) {
       throw new IllegalArgumentException();
     }
     Node<T> newNode = new Node<T>(value);
     Node<T> node = head;
-    Node<T> oldNode = head; 
-    for(int i=0; i<requestedPosition; i++){
+    Node<T> oldNode = head;
+    for (int i = 0; i < requestedPosition; i++) {
       node = node.next;
       oldNode = node;
       node.next = newNode;
@@ -45,12 +45,12 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
   @Override
   public void putNo(int requestedPosition, T value) {
-    if(requestedPosition > elements){
+    if (requestedPosition > elements) {
       throw new IllegalArgumentException();
     }
     Node<T> newNode = new Node<T>(value);
     Node<T> node = head;
-    for(int i=0; i<requestedPosition; i++){
+    for (int i = 0; i < requestedPosition; i++) {
       node = node.next;
       node.next = newNode;
     }
@@ -70,17 +70,18 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
   public void clear() {
     head = null;
   }
-  
+
   private class Node<T> {
     Node<T> next;
     T data;
 
-    Node(){
+    Node() {
 
     }
-    Node(T data){
+
+    Node(T data) {
       this.data = data;
     }
-    
+
   }
 }

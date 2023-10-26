@@ -1,45 +1,48 @@
+package application;
+
+import java.util.LinkedList;
+
 public class LinkedListWrapper<T> implements SimpleList<T> {
+
+  private LinkedList<T> list;
+
+  public LinkedListWrapper(){
+    list = new LinkedList<T>();
+  }
 
   @Override
   public T extractNo(int requestedPosition) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'extractNo'");
+    return list.remove(requestedPosition);
   }
 
   @Override
   public T getNo(int requestedPosition) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getNo'");
+    return list.get(requestedPosition);
   }
 
   @Override
   public T setNo(int requestedPosition, T value) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setNo'");
+    return list.set(requestedPosition, value);
   }
 
   @Override
   public void putNo(int requestedPosition, T value) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'putNo'");
+    list.add(requestedPosition, value);
   }
 
   @Override
   public int getSize() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+    return list.size();
   }
 
   @Override
   public boolean isEmpty() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    return list.isEmpty();
   }
 
   @Override
   public void clear() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    list.clear();
   }
 
 }

@@ -1,5 +1,3 @@
-package application;
-
 public class LinkedListWrapper<T> implements SimpleList<T> {
 
   @Override

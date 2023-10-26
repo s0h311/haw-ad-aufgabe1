@@ -1,10 +1,7 @@
-// This source code is UTF-8 coded - see https://stackoverflow.com/questions/9180981/how-to-support-utf-8-encoding-in-eclipse
-package application;
-
 import java.util.ArrayList;
 
 /**
- * Ein Wrapper für die ArrayList, so dass dieser das Interface SimpleList unterstützt.
+ * Ein Wrapper für die ArrayList, so dass dieser das Interface application.SimpleList unterstützt.
  *
  * @param <T> der Daten-Typ der Elemente/Items/Datensätze, die die Liste aufnimmt.
  * @author Michael Schaefers ([UTF-8]:"Michael Schäfers");  Px@Hamburg-UAS.eu
@@ -16,7 +13,7 @@ public class ArrayListWrapper<T> implements SimpleList<T> {
 
 
   /**
-   * Der Konstruktor intialisiert ein Objekt vom Typ ArrayListWrapper.
+   * Der Konstruktor intialisiert ein Objekt vom Typ application.ArrayListWrapper.
    */
   public ArrayListWrapper() {
     arrayList = new ArrayList<T>();

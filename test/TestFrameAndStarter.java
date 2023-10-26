@@ -5,8 +5,8 @@ package test;
 import java.util.HashSet;
 import java.util.Set;
 
-import application.ArrayListWrapper;
-import application.SimpleList;
+import ArrayListWrapper;
+import SimpleList;
 import test.supportStuff.OptimizationBlocker;
 import utility.Beautician;
 

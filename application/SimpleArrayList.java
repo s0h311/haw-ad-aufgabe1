@@ -1,5 +1,3 @@
-package application;
-
 public class SimpleArrayList<T> implements SimpleList<T> {
 
   private T[] array;

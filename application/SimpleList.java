@@ -1,5 +1,4 @@
 // This source code is UTF-8 coded - see https://stackoverflow.com/questions/9180981/how-to-support-utf-8-encoding-in-eclipse
-package application;
 
 /**
  * Eine einfache Liste mit den elementar nötigen Operationen.

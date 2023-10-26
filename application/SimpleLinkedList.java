@@ -1,5 +1,3 @@
-package application;
-
 public class SimpleLinkedList<T> implements SimpleList<T> {
 
   private int elements;

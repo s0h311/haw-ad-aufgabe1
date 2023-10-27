@@ -9,40 +9,26 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     array = getNewArray(64);
   }
 
-  /**
-   * Array Größe wird vergrößert oder verkleinert, je nach bedarf.
-   */
-  private void checkArraySize(int requestedPosition) {
-    if (requestedPosition > array.length) {
-      int newSize = array.length;
-      if (array.length % 2 != 0) {
-        newSize += (newSize + 1) / 2;
-      } else {
-        newSize += newSize / 2;
-      }
-      T[] biggerArray = getNewArray(newSize);
-      System.arraycopy(array, 0, biggerArray, 0, array.length);
-    } else if (array.length > 64 || array.length >= size * 2) {
-      int newSize = 2 * array.length / 3;
-      T[] smallerArray = getNewArray(newSize);
-      System.arraycopy(array, 0, smallerArray, 0, array.length);
-    }
-  }
-
   private void checkArrayContract() {
-    if ((double) array.length / (double) size > 2.0) return;
+    if (size < 64 && array.length == 64) return;
+    if ((double) array.length / (double) size < 2.0) return;
     int deltaDecrease = array.length % 3 == 0 ? 0 : array.length % 3 == 1 ? 2 : 1;
     int newSize = (array.length + deltaDecrease) * 2 / 3;
+    if (newSize < 64) newSize = 64;
+
     T[] newArray = getNewArray(newSize);
-    System.arraycopy(array, 0, newArray, 0, array.length);
+
+    System.arraycopy(array, 0, newArray, 0, newSize);
+    array = newArray;
   }
 
   private void checkArrayExpand() {
     if (Math.sqrt(array.length - size) > 1) return;
     int deltaIncrease = array.length % 2 == 0 ? 0 : 1;
-    int newSize = (array.length + deltaIncrease) / 2;
+    int newSize = array.length + (array.length + deltaIncrease) / 2;
     T[] newArray = getNewArray(newSize);
     System.arraycopy(array, 0, newArray, 0, array.length);
+    array = newArray;
   }
 
   @Override
@@ -55,7 +41,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
       array[i] = array[i + 1];
     }
 
-    array[array.length - 1] = null;
+    array[size - 1] = null;
 
     size--;
     checkArrayContract();
@@ -65,7 +51,9 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
   @Override
   public T getNo(int requestedPosition) {
-    checkPosition(requestedPosition);
+    if (requestedPosition < 0 || requestedPosition > size - 1) {
+      throw new IllegalArgumentException("invalid position");
+    }
 
     return array[requestedPosition];
   }

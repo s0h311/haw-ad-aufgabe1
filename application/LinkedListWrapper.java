@@ -4,10 +4,10 @@ import java.util.LinkedList;
 
 public class LinkedListWrapper<T> implements SimpleList<T> {
 
-  private LinkedList<T> list;
+  private final LinkedList<T> list;
 
-  public LinkedListWrapper(){
-    list = new LinkedList<T>();
+  public LinkedListWrapper() {
+    list = new LinkedList<>();
   }
 
   @Override

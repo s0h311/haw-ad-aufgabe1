@@ -11,14 +11,13 @@ import java.util.ArrayList;
  */
 public class ArrayListWrapper<T> implements SimpleList<T> {
 
-  final private ArrayList<T> arrayList;
-
+  private final ArrayList<T> arrayList;
 
   /**
    * Der Konstruktor intialisiert ein Objekt vom Typ application.ArrayListWrapper.
    */
   public ArrayListWrapper() {
-    arrayList = new ArrayList<T>();
+    arrayList = new ArrayList<>();
   }//constructor()
 
   @Override

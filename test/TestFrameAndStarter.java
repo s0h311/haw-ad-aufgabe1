@@ -1,14 +1,13 @@
 // This source code is UTF-8 coded - see https://stackoverflow.com/questions/9180981/how-to-support-utf-8-encoding-in-eclipse
 package test;
 
+import application.ArrayListWrapper;
+import application.SimpleList;
+import test.supportStuff.OptimizationBlocker;
+import utility.Beautician;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import ArrayListWrapper;
-import SimpleList;
-import test.supportStuff.OptimizationBlocker;
-import utility.Beautician;
 
 
 /**

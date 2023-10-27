@@ -143,3 +143,4 @@ synchronizeWithOriginMasterBranch.bash
 
 /.idea/
 *.iml
+/out/

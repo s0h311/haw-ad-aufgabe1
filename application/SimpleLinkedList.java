@@ -6,7 +6,7 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
   private int size;
 
   public SimpleLinkedList() {
-    head = new Node<T>();
+    head = new Node<>();
     size = 0;
   }
 
@@ -45,8 +45,8 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
 
     if (requestedPosition == 0) {
       Node<T> old = head;
+      newNode.next = head.next;
       head = newNode;
-      newNode.next = old.next;
       return old.data;
     }
 
@@ -68,12 +68,19 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
     if (requestedPosition > size) {
       throw new IllegalArgumentException("invalid position");
     }
-    size++;
 
     Node<T> newNode = new Node<>(value);
 
-    if (requestedPosition == 0) {
+    if (requestedPosition == 0 && size == 0) {
       head = newNode;
+      size++;
+      return;
+    }
+
+    if (requestedPosition == 0 && head.next != null) {
+      newNode.next = head;
+      head = newNode;
+      size++;
       return;
     }
 
@@ -89,10 +96,12 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
       Node<T> next = current.next;
       current.next = newNode;
       newNode.next = next;
+      size++;
       return;
     }
 
     current.next = newNode;
+    size++;
   }
 
   @Override

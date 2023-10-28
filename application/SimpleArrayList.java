@@ -2,8 +2,8 @@ package application;
 
 public class SimpleArrayList<T> implements SimpleList<T> {
 
-  private T[] array;
-  private int size;
+  private T[] array; // public
+  private int size; // public
 
   public SimpleArrayList() {
     array = getNewArray(64);

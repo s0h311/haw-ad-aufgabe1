@@ -1,7 +1,7 @@
 // This source code is UTF-8 coded - see https://stackoverflow.com/questions/9180981/how-to-support-utf-8-encoding-in-eclipse
 package test;
 
-import application.ArrayListWrapper;
+import application.SimpleLinkedList;
 import application.SimpleList;
 import test.supportStuff.OptimizationBlocker;
 import utility.Beautician;
@@ -17,6 +17,8 @@ import java.util.Set;
  * @version 23/10/18#001
  */
 public class TestFrameAndStarter {
+
+  private static int RUN_COUNT = 1_000_00;
 
   public static void main(final String... unused) {
 
@@ -36,7 +38,7 @@ public class TestFrameAndStarter {
       // setup test data for functionality test
       @SuppressWarnings("unchecked") final SimpleList<Integer>[] simpleList = (SimpleList<Integer>[]) new SimpleList[3];
       for (int i = 0; i < 3; i++) {
-        simpleList[i] = new ArrayListWrapper<Integer>();                // <<<<<<<<<<<<<<<<================ HERE
+        simpleList[i] = new SimpleLinkedList<>(); // TODO HIER
       }//for
       final int listSize = 1657;
       for (int i = 0; i < listSize; i++) {
@@ -172,11 +174,11 @@ public class TestFrameAndStarter {
     //
     int runCnt;
     final OptimizationBlocker ob = new OptimizationBlocker();
-    final SimpleList<Integer> list = new ArrayListWrapper<Integer>();
+    final SimpleList<Integer> list = new SimpleLinkedList<>(); // TODO HIER
 
 
     // Am Listenanfang einfügen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {
@@ -198,7 +200,7 @@ public class TestFrameAndStarter {
 
 
     // In der Listenmitte einfügen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {
@@ -221,7 +223,7 @@ public class TestFrameAndStarter {
 
 
     // Am Listenende einfügen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {
@@ -244,7 +246,7 @@ public class TestFrameAndStarter {
 
 
     // Am Listenanfang löschen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {
@@ -266,7 +268,7 @@ public class TestFrameAndStarter {
 
 
     // In der Listenmitte löschen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {
@@ -289,7 +291,7 @@ public class TestFrameAndStarter {
 
 
     // Am Listenende löschen
-    runCnt = 1_000_000;
+    runCnt = RUN_COUNT;
     list.clear();
     /*scope*/
     {

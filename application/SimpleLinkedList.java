@@ -14,14 +14,26 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
   public T extractNo(int requestedPosition) {
     checkPosition(requestedPosition);
 
-    Node<T> current = head;
+    Node<T> requested = head;
 
-    for (int i = 0; i < requestedPosition; i++) {
-      current = current.next;
+    if (requestedPosition == 0) {
+      head = head.next;
+      size--;
+      return requested.data;
     }
 
+    Node<T> prev = head;
+
+    for (int i = 0; i < requestedPosition - 1; i++) {
+      prev = prev.next;
+    }
+
+    requested = prev.next;
+
+    prev.next = requested.next;
+
     size--;
-    return current.data;
+    return requested.data;
   }
 
   @Override
@@ -77,7 +89,7 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
       return;
     }
 
-    if (requestedPosition == 0 && head.next != null) {
+    if (requestedPosition == 0) {
       newNode.next = head;
       head = newNode;
       size++;
@@ -117,6 +129,7 @@ public class SimpleLinkedList<T> implements SimpleList<T> {
   @Override
   public void clear() {
     head = null;
+    size = 0;
   }
 
   // HELPERS

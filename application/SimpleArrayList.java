@@ -11,7 +11,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
   private void checkArrayContract() {
     if (size < 64 && array.length == 64) return;
-    if ((double) array.length / (double) size < 2.0) return;
+    if (array.length / size < 2) return;
     int deltaDecrease = array.length % 3 == 0 ? 0 : array.length % 3 == 1 ? 2 : 1;
     int newSize = (array.length + deltaDecrease) * 2 / 3;
     if (newSize < 64) newSize = 64;
@@ -23,7 +23,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
   }
 
   private void checkArrayExpand() {
-    if (Math.sqrt(array.length - size) > 1) return;
+    if (array.length != size) return;
     int deltaIncrease = array.length % 2 == 0 ? 0 : 1;
     int newSize = array.length + (array.length + deltaIncrease) / 2;
     T[] newArray = getNewArray(newSize);
